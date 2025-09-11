@@ -1,10 +1,14 @@
 pipeline {
     agent any
 
-    environment {
-        MAVEN_HOME = '/usr/share/maven' // Path to Maven installation
-        SONARQUBE_SERVER = 'SonarQube'  // SonarQube server configured in Jenkins
-        NEXUS_REPO = 'http://nexus.example.com/repository/maven-releases/' // Nexus repository URL
+  //  environment {
+  //      MAVEN_HOME = '/usr/share/maven' // Path to Maven installation
+  //      SONARQUBE_SERVER = 'SonarQube'  // SonarQube server configured in Jenkins
+  //      NEXUS_REPO = 'http://nexus.example.com/repository/maven-releases/' // Nexus repository URL
+  //  }
+
+    tools {
+        maven 'mvn'
     }
     stages {
         stage('Checkout Code') { // Clones the repository
