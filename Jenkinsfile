@@ -8,12 +8,12 @@ pipeline {
   //  }
 
     tools {
-        maven 'mvn'
+        maven 'mymvn'
     }
     stages {
         stage('Checkout Code') { // Clones the repository
             steps {
-                git 'https://github.com/carrieyanzh/spring-boot-hello-world.git'
+               git branch: 'main', url: 'https://github.com/carrieyanzh/spring-boot-hello-world.git'
             }
         }
         stage('Build with Maven') { // Builds the project and creates JAR/WAR
