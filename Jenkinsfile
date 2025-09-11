@@ -1,11 +1,11 @@
 pipeline {
     agent any
 
-  //  environment {
+    environment {
   //      MAVEN_HOME = '/usr/share/maven' // Path to Maven installation
-  //      SONARQUBE_SERVER = 'SonarQube'  // SonarQube server configured in Jenkins
-  //      NEXUS_REPO = 'http://nexus.example.com/repository/maven-releases/' // Nexus repository URL
-  //  }
+        SONARQUBE_SERVER = 'SonarQube'  // SonarQube server configured in Jenkins
+        NEXUS_REPO = 'http://nexus.example.com/repository/maven-releases/' // Nexus repository URL
+    }
 
     tools {
         maven 'mymvn'
@@ -19,6 +19,18 @@ pipeline {
         stage('Build with Maven') { // Builds the project and creates JAR/WAR
             steps {
                 sh 'mvn clean package'
+            }
+        }
+        stage('Build with test') { // Builds the project and creates JAR/WAR
+            steps {
+                sh 'mvn test'
+            }
+        }
+         stage('Build with sonarqube') { // Builds the project and creates JAR/WAR
+            steps {
+                withSonarQubeEnv(SONARQUBE_SERVER){
+                    sh 'mvn sonar:sonar'
+                }
             }
         }
     }
