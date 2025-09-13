@@ -29,7 +29,7 @@ pipeline {
          stage('Build with sonarqube') { // Builds the project and creates JAR/WAR
             steps {
                 withSonarQubeEnv(SONARQUBE_SERVER){
-                    sh 'mvn sonar:sonar'
+                    //sh 'mvn sonar:sonar'
                     sh 'mvn clean verify sonar:sonar'
                 }
             }
