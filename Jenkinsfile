@@ -3,7 +3,7 @@ pipeline {
 
     environment {
   //      MAVEN_HOME = '/usr/share/maven' // Path to Maven installation
-        SONARQUBE_SERVER = 'SonarQube'  // SonarQube server configured in Jenkins
+        SONARQUBE_SERVER = 'mySonarQube'  // SonarQube server configured in Jenkins
         NEXUS_REPO = 'http://nexus.example.com/repository/maven-releases/' // Nexus repository URL
     }
 
