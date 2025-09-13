@@ -8,7 +8,7 @@ pipeline {
     }
 
     tools {
-        maven 'mymvn'
+        maven 'mymaven'
     }
     stages {
         stage('Checkout Code') { // Clones the repository
