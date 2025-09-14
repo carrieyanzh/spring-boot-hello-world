@@ -17,6 +17,11 @@ pipeline {
                 sh 'docker build -t $DOCKER_IMAGE .'
             }
         }
+        stage('Test') {
+            steps {
+                 sh 'mvn clean test'
+            }
+        }
     }
     post {
         success {
