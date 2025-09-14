@@ -1,0 +1,14 @@
+pipeline {
+    agent any
+
+    environment {
+        DOCKER_IMAGE = 'myapp:latest'
+        REGISTRY = 'myregistry.com'
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                git branch: 'main', url: 'git@github.com:user/repo.git'
+            }
+        }
