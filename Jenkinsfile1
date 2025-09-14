@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Push Image') {
             steps {
-                withDockerRegistry([credentialsId: 'dockerhub-cred', url: "https://$REGISTRY"]) {
+                withDockerRegistry([credentialsId: 'sonar-token', url: "https://$REGISTRY"]) {
                     sh 'docker push $REGISTRY/$DOCKER_IMAGE'
                 }
             }
