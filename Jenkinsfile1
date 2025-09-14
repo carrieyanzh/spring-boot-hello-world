@@ -4,6 +4,7 @@ pipeline {
     environment {
         DOCKER_IMAGE = 'myapp:latest'
         REGISTRY = '192.168.1.122:9001'
+         SONARQUBE_SERVER = 'mySonarQube' 
     }
     tools {
         maven "mymaven"
@@ -26,9 +27,10 @@ pipeline {
         }
         stage('Push Image') {
             steps {
-                withDockerRegistry([credentialsId: 'my-sonar-token', url: "https://$REGISTRY"]) {
+                withDockerRegistry([credentialsId: 'my-sonar-token', url: "http://$REGISTRY"]) {
                     sh 'docker push $REGISTRY/$DOCKER_IMAGE'
                 }
+                
             }
         }
     }
